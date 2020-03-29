@@ -12,9 +12,8 @@ const botId = "693664560141566062";
 chacotaBot.on("message", message => {
   isMemberAllowed = false;
   let darPermissao = cargo => {
-    let role = message.member.roles.cache.some(r => r.name === cargo);
 
-    if (role) {
+    if (message.member.roles.cache.has(cargo)) {
       this.isMemberAllowed = true;
 
       message.channel.send(isMemberAllowed);
