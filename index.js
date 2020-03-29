@@ -54,7 +54,7 @@ chacotaBot.on("message", message => {
   if (message.content.startsWith("!roleta")) {
     if (this.isMemberAllowed) {
       let randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
-      message.reply(randomNumber);
+      message.reply(`seu número sorteado foi: ${randomNumber}`);
     } else {
       message.reply('Você não tem permissão de usar esse comando').then(msg => msg.delete(3500)).catch(e => console.log(e))
     }
