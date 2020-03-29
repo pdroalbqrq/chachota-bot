@@ -39,9 +39,9 @@ chacotaBot.on("message", message => {
     }
   };
 
+  role = message.member.roles.cache.some(r => r.id === mestre);
   switch (args[0]) {
     case 'Proleta':
-      let role = message.member.roles.cache.some(r => r.id === mestre);
       if (role) {
         var str = message.content;
         var words = str.split(" ");
@@ -50,7 +50,6 @@ chacotaBot.on("message", message => {
       break;
 
     case 'Rroleta':
-      let role = message.member.roles.cache.some(r => r.id === mestre);
       if (role) {
         var str = message.content;
         var words = str.split(" ");
