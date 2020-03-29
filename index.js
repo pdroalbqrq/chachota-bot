@@ -62,7 +62,7 @@ chacotaBot.on("message", message => {
         let randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
         message.reply(`seu número sorteado foi: ${randomNumber}`);
       } else {
-        message.reply('Você não tem permissão de usar esse comando').then(msg => msg.delete(3500)).catch(e => console.log(e))
+        message.reply('você não tem permissão de usar esse comando');
       }
       break;
   }
