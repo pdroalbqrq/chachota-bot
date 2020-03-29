@@ -65,7 +65,7 @@ chacotaBot.on("message", message => {
 chacotaBot.on("guildMemberAdd", member => {
   const channel = member.guild.channels.cache.find(channel => channel.name === 'bem-vindo');
   if (!channel) return;
-  message.channel.send(`${member} é o mais novo CHACOTEIRO, por favor leia as regras e dicas`);
+  channel.send(`${member} é o mais novo CHACOTEIRO, por favor leia as regras e dicas`);
 
   // chacotaBot.on("message", message => {
   //   if (!message.member.roles.cache.some(r => r.name === 'chacotaBot')) {
