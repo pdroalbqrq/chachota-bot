@@ -4,7 +4,6 @@ const chacotaBot = new disc.Client();
 
 dotenv.config();
 chacotaBot.login(process.env.TOKEN);
-chacotaBot.options()
 
 const mestre = "693629680841916437";
 const membro = "693634173898063934";
