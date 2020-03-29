@@ -11,20 +11,25 @@ const botId = "693664560141566062";
 
 chacotaBot.on("message", message => {
   isMemberAllowed = false;
-  let darPermissao = cargo => {
 
+  let darPermissao = cargo => {
     if (message.member.roles.cache.has(cargo)) {
       this.isMemberAllowed = true;
 
-      message.channel.send(isMemberAllowed);
     } else {
       this.isMemberAllowed = false;
 
-      message.channel.send(isMemberAllowed);
     }
+  };
 
+  let retirarPermissao = cargo => {
+    if (message.member.roles.cache.has(cargo)) {
+      this.isMemberAllowed = false;
 
+    } else {
+      this.isMemberAllowed = false;
 
+    }
   };
 
   if (message.content.startsWith("!Proleta")) {
@@ -35,12 +40,21 @@ chacotaBot.on("message", message => {
       darPermissao(words[1]);
     }
   }
+  if (message.content.startsWith("!Rroleta")) {
+    let role = message.member.roles.cache.has(mestre);
+    if (role) {
+      var str = message.content;
+      var words = str.split(" ");
+      retirarPermissao(words[1]);
+    }
+  }
 
   if (message.content.startsWith("!roleta")) {
-    // let role = message.member.roles.cache.has(mestre);
     if (isMemberAllowed) {
       randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
       message.channel.send(randomNumber);
+    } else {
+      message.channel.send('Você não tem permissão de usar esse comando').then(msg => msg.delete(3500)).catch(e => console.log(e))
     }
   }
 });
