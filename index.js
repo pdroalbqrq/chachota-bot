@@ -65,12 +65,12 @@ chacotaBot.on("message", message => {
 chacotaBot.on("guildMemberAdd", member => {
   const channel = member.guild.channels.cache.find(channel => channel.name === 'bem-vindo');
   if (!channel) return;
+  message.channel.send(`${member} é o mais novo CHACOTEIRO, por favor leia as regras e dicas`);
 
-  chacotaBot.on("message", message => {
+  // chacotaBot.on("message", message => {
+  //   if (!message.member.roles.cache.some(r => r.name === 'chacotaBot')) {
+  //     return message.channel.send('Proibido enviar mensagens nesse canal').then(msg => msg.delete(3500)).catch(e => console.log(e))
+  //   }
+  // })
 
-    if (!message.member.roles.cache.some(r => r.name === 'chacotaBot')) {
-      return message.channel.send('Proibido enviar mensagens nesse canal').then(msg => msg.delete(3500)).catch(e => console.log(e))
-    }
-    message.channel.send(`${member} é o mais novo CHACOTEIRO, por favor leia as regras e dicas`);
-  })
 })
