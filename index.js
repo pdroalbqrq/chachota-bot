@@ -33,7 +33,7 @@ chacotaBot.on("message", message => {
   };
 
   if (message.content.startsWith("!Proleta")) {
-    let role = message.member.roles.cache.has(mestre);
+    let role = message.member.roles.cache.some(r => r.id === mestre);
     if (role) {
       var str = message.content;
       var words = str.split(" ");
@@ -41,7 +41,7 @@ chacotaBot.on("message", message => {
     }
   }
   if (message.content.startsWith("!Rroleta")) {
-    let role = message.member.roles.cache.has(mestre);
+    let role = message.member.roles.cache.some(r => r.id === mestre);
     if (role) {
       var str = message.content;
       var words = str.split(" ");
