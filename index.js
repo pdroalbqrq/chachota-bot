@@ -14,6 +14,7 @@ chacotaBot.on("message", message => {
   let darPermissao = cargo => {
     let role = message.member.roles.cache.some(r => r.name === cargo);
 
+    message.channel.send(isMemberAllowed);
     // randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
     // message.channel.send(randomNumber);
 
