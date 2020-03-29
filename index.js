@@ -4,6 +4,7 @@ const chacotaBot = new disc.Client();
 
 dotenv.config();
 chacotaBot.login(process.env.TOKEN);
+chacotaBot.options()
 
 const mestre = "693629680841916437";
 const membro = "693634173898063934";
@@ -13,7 +14,6 @@ chacotaBot.on("message", message => {
   isMemberAllowed = false;
 
   let darPermissao = cargo => {
-
     if (message.member.roles.cache.some(r => r.name === cargo)) {
       this.isMemberAllowed = true;
       console.log(this.isMemberAllowed)
@@ -22,11 +22,9 @@ chacotaBot.on("message", message => {
       this.isMemberAllowed = false;
 
     }
-
   };
 
   let retirarPermissao = cargo => {
-
     if (message.member.roles.cache.some(r => r.name === cargo)) {
       this.isMemberAllowed = false;
 
@@ -34,33 +32,27 @@ chacotaBot.on("message", message => {
       this.isMemberAllowed = false;
 
     }
-
   };
 
   if (message.content.startsWith("!Proleta")) {
-
     let role = message.member.roles.cache.some(r => r.id === mestre);
     if (role) {
       var str = message.content;
       var words = str.split(" ");
       darPermissao(words[1]);
     }
-
   }
 
   if (message.content.startsWith("!Rroleta")) {
-
     let role = message.member.roles.cache.some(r => r.id === mestre);
     if (role) {
       var str = message.content;
       var words = str.split(" ");
       retirarPermissao(words[1]);
     }
-
   }
 
   if (message.content.startsWith("!roleta")) {
-
     if (this.isMemberAllowed) {
       let randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
       message.channel.send(randomNumber);
@@ -72,7 +64,6 @@ chacotaBot.on("message", message => {
 });
 
 chacotaBot.on("guildMemberAdd", member => {
-
   const channel = member.guild.channels.cache.find(channel => channel.name === 'bem-vindo');
   if (!channel) return;
 
