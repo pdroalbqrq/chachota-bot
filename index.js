@@ -23,8 +23,7 @@ chacotaBot.on("message", message => {
       message.channel.send(isMemberAllowed);
     }
 
-    // randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
-    // message.channel.send(randomNumber);
+
 
   };
 
@@ -34,6 +33,14 @@ chacotaBot.on("message", message => {
       var str = message.content;
       var words = str.split(" ");
       darPermissao(words[1]);
+    }
+  }
+
+  if (message.content.startsWith("!roleta")) {
+    // let role = message.member.roles.cache.has(mestre);
+    if (isMemberAllowed) {
+      randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
+      message.channel.send(randomNumber);
     }
   }
 });
