@@ -16,7 +16,7 @@ chacotaBot.on("ready", () => {
 })
 
 chacotaBot.on("message", message => {
-  let isMemberAllowed = false;
+  isMemberAllowed = false;
   let args = message.content.substring(PREFIX.length).split(" ");
 
   let darPermissao = cargo => {
