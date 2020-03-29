@@ -13,8 +13,9 @@ chacotaBot.on("message", message => {
   isMemberAllowed = false;
 
   let darPermissao = cargo => {
-    if (message.member.roles.cache.has(cargo)) {
+    if (message.member.roles.cache.some(r => r.name === cargo)) {
       this.isMemberAllowed = true;
+      console.log(this.isMemberAllowed)
 
     } else {
       this.isMemberAllowed = false;
@@ -23,7 +24,7 @@ chacotaBot.on("message", message => {
   };
 
   let retirarPermissao = cargo => {
-    if (message.member.roles.cache.has(cargo)) {
+    if (message.member.roles.cache.some(r => r.name === cargo)) {
       this.isMemberAllowed = false;
 
     } else {
@@ -50,8 +51,8 @@ chacotaBot.on("message", message => {
   }
 
   if (message.content.startsWith("!roleta")) {
-    if (isMemberAllowed) {
-      randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
+    if (this.isMemberAllowed) {
+      let randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
       message.channel.send(randomNumber);
     } else {
       message.channel.send('Você não tem permissão de usar esse comando').then(msg => msg.delete(3500)).catch(e => console.log(e))
